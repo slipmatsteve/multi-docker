@@ -5,6 +5,8 @@ services:
   - docker
 
 before_install:
+  - echo 'DOCKER_OPTS="$DOCKER_OPTS --debug --registry-mirror=https://mirror.gcr.io"'
+  - sudo service docker restart
   - docker build -t slipmatsteve/react-test -f ./client/Dockerfile.dev ./client
 
 script:
